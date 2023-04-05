@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/stocks")
-@RequestMapping("/health")
 public class StockResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StockResource.class);
