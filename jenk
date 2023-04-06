@@ -5,8 +5,7 @@ pipeline{
         stage('git clone'){
             steps{
 
-                sh 'git clone https://github.com/vaibhav9191/kubernetes_java_deployment.git'
-
+                git branch: 'main', url: 'https://github.com/vaibhav9191/kubernetes_java_deployment.git'
             }
 
            
