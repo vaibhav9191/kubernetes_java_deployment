@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    stages{
+        
+        stage('Build microservies Parallely'){
+            parallel{
+                stage('Build Microservice -1')
+                sh 'cd shopfront && mvn clean install -Dskiptests'
+            }
+            stage('Build Microservice -2'){
+                sh 'cd productcatalogue && mvn clean install -Dskiptests'
+            }
+            stage('Build Microservice -3'){
+
+                sh 'cd stockmanager && mvn clean install -Dskiptests'
+            }
+
+           
+
+
+        }
+
+    }
+}
