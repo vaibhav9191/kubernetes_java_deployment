@@ -12,24 +12,36 @@ pipeline{
            
         }
         
-        // stage('Build microservies Parallely'){
-        //     parallel{
-        //         stage('Build Microservice -1'){
+        stage('Build microservies Parallely'){
+            parallel{
 
-        //             sh 'cd shopfront && mvn clean install -Dskiptests'
+                stage('Build Microservice -1'){
+                    steps{
 
-        //         }
-        //         stage('Build Microservice -2'){
-        //             sh 'cd productcatalogue && mvn clean install -Dskiptests'
-        //         }
-        //         stage('Build Microservice -3'){
+                        sh 'cd shopfront && mvn clean install -Dskiptests'
 
-        //             sh 'cd stockmanager && mvn clean install -Dskiptests'
-        //         }
+                    }
+
+                }
+                stage('Build Microservice -2'){
+                    steps{
+                        sh 'cd productcatalogue && mvn clean install -Dskiptests'
+
+                    }
+                    
+                }
+                stage('Build Microservice -3'){
+
+                    steps{
+                        sh 'cd stockmanager && mvn clean install -Dskiptests'
+                    }
+
+                    
+                }
                 
-        //     }
+            }
 
-        // }
+        }
 
     }
 }
