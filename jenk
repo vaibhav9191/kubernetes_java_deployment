@@ -1,7 +1,14 @@
 pipeline{
     agent any
     stages{
+
+        stage('git clone'){
+
+            sh 'git clone https://github.com/vaibhav9191/kubernetes_java_deployment.git'
+        }
         
+
+
         stage('Build microservies Parallely'){
             parallel{
                 stage('Build Microservice -1')
