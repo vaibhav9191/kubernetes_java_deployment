@@ -1,26 +1,30 @@
 pipeline{
     agent any
-    stages{
+    stages {
 
         stage('git clone'){
 
             sh 'git clone https://github.com/vaibhav9191/kubernetes_java_deployment.git'
         }
         
-
-
         stage('Build microservies Parallely'){
             parallel{
-                stage('Build Microservice -1')
-                sh 'cd shopfront && mvn clean install -Dskiptests'
-            }
-            stage('Build Microservice -2'){
-                sh 'cd productcatalogue && mvn clean install -Dskiptests'
-            }
-            stage('Build Microservice -3'){
+                stage('Build Microservice -1'){
 
-                sh 'cd stockmanager && mvn clean install -Dskiptests'
+                    sh 'cd shopfront && mvn clean install -Dskiptests'
+
+                }
+                stage('Build Microservice -2'){
+                    sh 'cd productcatalogue && mvn clean install -Dskiptests'
+                }
+                stage('Build Microservice -3'){
+
+                    sh 'cd stockmanager && mvn clean install -Dskiptests'
+                }
+                
             }
+            
+            
 
            
 
