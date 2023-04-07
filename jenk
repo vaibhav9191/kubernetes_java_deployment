@@ -10,6 +10,8 @@ pipeline{
 
            
         }
+
+        
         
         stage('Build microservies Parallely'){
             parallel{
@@ -40,6 +42,18 @@ pipeline{
                 
             }
 
+        }
+        stage('static analysis'){
+
+            steps{
+
+                 sh 'cd shopfront && mvn clean package sonar:sonar -Dsonar.projectKey=shopfront -Dsonar.projectName=shopfront'
+                 sh 'cd productcatalogue && mvn clean package sonar:sonar -Dsonar.projectKey=productcatalogue -Dsonar.projectName=productcatalogue'
+                 sh 'cd stockmanager && mvn clean package sonar:sonar -Dsonar.projectKey=stockmanager -Dsonar.projectName=stockmanager'
+
+
+
+            }
         }
 
     }
