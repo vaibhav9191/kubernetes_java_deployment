@@ -94,7 +94,7 @@ pipeline{
                     }
                       
                       sh """
-                      if( "(cat status1.txt)" == "ERROR" ); then
+                      if( "(sed -n -p status1.txt)" == "ERROR" ); then
                         echo "*****QUALITY GATE ERROR *****"
                         else
                         echo "*****QUALITY GATE is OK *****"
