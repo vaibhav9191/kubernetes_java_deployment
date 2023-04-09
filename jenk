@@ -76,8 +76,12 @@ pipeline{
                         curl -X GET -u admin:vvv "http://3.84.23.127:9000/api/qualitygates/project_status?projectKey=${service}" >status.json
                         cat status.json | jq '.projectStatus.status'>ss.txt
                         sed 's/"//g' ss.txt>status1.txt
-                        if [$(sed -n '1p' status1.txt) == 'ERROR']
-                        			 
+                        if [[ $(sed -n '1p' status1.txt) == 'ERROR' ]]; then
+                        echo "*****QUALITY GATE ERROR *****"
+                        exit 1
+                        else
+                        echo "*****QUALITY GATE OKAY******"
+                        fi		 
                         
 
 
