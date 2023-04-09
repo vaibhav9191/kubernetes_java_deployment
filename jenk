@@ -76,7 +76,7 @@ pipeline{
                         curl -X GET -u admin:vvv "http://3.84.23.127:9000/api/qualitygates/project_status?projectKey=${service}" >>status.json
                         cat status.json | jq '.projectStatus.status'>ss.txt
                         sed 's/"//g' ss1.txt>status1.txt
-                        echo "status=$(sed -n status1.txt)"
+                        
 
 
                         """
