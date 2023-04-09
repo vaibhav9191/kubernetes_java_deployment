@@ -72,7 +72,9 @@ pipeline{
                 script{
 
                     def services = ['shopfront','productcatalogue','stockmanager']
-                    def result = sh(script: "curl -s -u admin:vvv http://3.84.23.127:9000/api/qualitygates/project_status?project=${service}", returnStdout: true)
+                    def sonarUrl = 'http://3.84.23.127:9000'
+                    def sonarToken = credentials('sonartok')
+                    def result = sh(script: "curl -s -u ${sonarToken} ${sonarUrl}/api/qualitygates/project_status?project=${service}", returnStdout: true)
 
 
 
