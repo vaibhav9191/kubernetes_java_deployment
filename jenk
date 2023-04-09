@@ -78,7 +78,7 @@ pipeline{
             
                         echo "Checking quality gate for ${service}"
                 
-                        waitForQualityGate abortPipeline: false, credentialsId: 'nwwsonar', serviceKey: service
+                        waitForQualityGate abortPipeline: false, credentialsId: 'nwwsonar', projectKey: service
               
 
                     // def services = ['shopfront','productcatalogue','stockmanager']
