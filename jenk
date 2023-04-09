@@ -64,14 +64,29 @@ pipeline{
                 
 
             }
+        }
+
+        stage('Quality gate status'){
+
+            steps{
+                script{
+
+                    def services = ['shopfront','productcatalogue','stockmanager']
+                    def qualityGate = qualityGates()
+                    for(services in services){
+                        def result = qualityGate.getQualitygeteResult(projectKey: service)
+                        echo "Quality Gate status For ${service} : ${result.getStatus()}"
+                        if(result.isFailed()){
+                            currentBuild.result = 'FAILURE'
+                        }
+                    } 
+
+
+                }
+            }
 
 
 
-                 
-
-
-
-            
         }
 
     }
