@@ -72,7 +72,7 @@ pipeline{
                 script{
 
                     def services = ['shopfront','productcatalogue','stockmanager']
-                    def qualityGate = qualityGates()
+                    def qualityGate = qualityGateCheck()
                     for(service in services){
                         def result = qualityGate.getQualitygeteResult(projectKey: service)
                         echo "Quality Gate status For ${service} : ${result.getStatus()}"
