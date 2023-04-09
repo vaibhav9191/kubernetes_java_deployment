@@ -78,6 +78,7 @@ pipeline{
                         echo "Quality Gate status For ${service} : ${result.getStatus()}"
                         if(result.isFailed()){
                             currentBuild.result = 'FAILURE'
+                            //dd
                         }
                     } 
 
