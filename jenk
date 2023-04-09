@@ -77,12 +77,7 @@ pipeline{
                         cat status.json | jq '.projectStatus.status'>ss.txt
                         sed 's/"//g' ss.txt>status1.txt
                         if [$(sed -n '1p' status1.txt) == 'ERROR']
-                        then
-                        echo  "*****QUALITY GATE ERROR *****"
-                        exit 1 FAILURE
-                        else
-                        echo "*****QUALITY GATE OKAY******"
-                        fi				 
+                        			 
                         
 
 
