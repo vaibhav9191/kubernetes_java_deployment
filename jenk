@@ -73,14 +73,10 @@ pipeline{
                     for(service in services){
                         echo "Checking quality gate for ${service}"
                         sh """
-                        curl -X GET -u admin:vvv "http://3.84.23.127:9000/api/qualitygates/project_status?projectKey=${service}" >status.json
+                        curl -X GET -u admin:vvv "http://3.84.23.127:9000/api/qualitygates/project_status?projectKey=${service}" >>status.json
                         cat status.json | jq '.projectStatus.status'>ss.txt
-                        sed 's/"//g' ss.txt>status1.txt
-                        if [ "$(cat status1.txt)" = "ERROR" ]; then
-                        echo "*****QUALITY GATE ERROR *****"
-                        else
-                        echo "*****QUALITY GATE is OK *****"
-                        fi
+                        sed 's/"//g' ss.txt>>status1.txt
+                       
                         	 
                         
 
@@ -96,6 +92,11 @@ pipeline{
                         // fi
 
                     }
+                     if [ "$(cat status1.txt)" = "ERROR" ]; then
+                        echo "*****QUALITY GATE ERROR *****"
+                        else
+                        echo "*****QUALITY GATE is OK *****"
+                        fi
 
 
 
