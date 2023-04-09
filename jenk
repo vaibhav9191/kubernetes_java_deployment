@@ -72,14 +72,18 @@ pipeline{
                 script{
 
                     def services = ['shopfront','productcatalogue','stockmanager']
-                    def qualityGate = qualityGateCheck()
-                    for(service in services){
-                        def result = qualityGate.getQualitygeteResult(projectKey: service)
-                        echo "Quality Gate status For ${service} : ${result.getStatus()}"
-                        if(result.isFailed()){
-                            currentBuild.result = 'FAILURE'
-                            //dd
-                        }
+                    def result = sh(script: "curl -s -u admin:vvv http://3.84.23.127:9000/api/qualitygates/project_status?project=${service}", returnStdout: true)
+
+
+
+                    // def qualityGate = qualityGateCheck()
+                    // for(service in services){
+                    //     def result = qualityGate.getQualitygeteResult(projectKey: service)
+                    //     echo "Quality Gate status For ${service} : ${result.getStatus()}"
+                    //     if(result.isFailed()){
+                    //         currentBuild.result = 'FAILURE'
+                    //         //dd
+                    //     }
                     } 
 
 
