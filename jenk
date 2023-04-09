@@ -83,28 +83,11 @@ pipeline{
                         then
                         echo -e "****RED QUALITY GATE ERROR"
                         fi
-
-
-                        
-
-
                     }
                 }
 
-                    
-
-                    
-
-
-
-                    
-
-
-                }
             }
-
-
-
+            
         }
 
     }
