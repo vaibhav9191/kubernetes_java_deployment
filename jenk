@@ -92,11 +92,15 @@ pipeline{
                         // fi
 
                     }
-                     if( "(cat status1.txt)" == "ERROR" ); then
+                      
+                      sh """
+                      if( "(cat status1.txt)" == "ERROR" ); then
                         echo "*****QUALITY GATE ERROR *****"
                         else
                         echo "*****QUALITY GATE is OK *****"
                         fi
+
+                        """
 
 
 
