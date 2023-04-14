@@ -91,11 +91,17 @@ pipeline{
                     }
                       
                       sh """
-                      if( "(sed -n '1p' status1.txt)" == "ERROR" ); then
-                        echo "*****QUALITY GATE ERROR *****"
-                        else
-                        echo "*****QUALITY GATE is OK *****"
-                        fi
+                      
+                        for line in $(cat status1.txt); do
+                         if [[ $line == "ERROR" ]]; then
+                            echo "***** QUALITY GATE is ERROR *****"
+                            exit 1
+                         fi
+                        done
+
+                        echo "***** QUALITY GATE is OK *****"
+
+
 
                         """
 
@@ -106,6 +112,19 @@ pipeline{
 
             }
 
+        }
+
+        stage("copy jars to nexus"){
+            steps{
+
+                scripts{
+                    
+
+
+                }
+
+
+            }
         }
 
     }
