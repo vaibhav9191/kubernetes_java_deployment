@@ -90,15 +90,13 @@ pipeline{
 
                     }
                       
-                      sh """
-                      
-                        for line in $(cat status1.txt); do
-                         if [[ $line == "ERROR" ]]; then
+                      sh """                     
+                        for line in \$(cat status1.txt); do
+                         if [[ \$line == "ERROR" ]]; then
                             echo "***** QUALITY GATE is ERROR *****"
                             exit 1
                          fi
                         done
-
                         echo "***** QUALITY GATE is OK *****"
 
 
