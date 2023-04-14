@@ -115,7 +115,10 @@ pipeline{
         stage("copy jars to nexus"){
             steps{
 
-                scripts{
+                script{
+
+                    echo "*****WINNNN *****"
+
                     
 
 
