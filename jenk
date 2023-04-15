@@ -112,21 +112,22 @@ pipeline{
 
         }
 
-        stage("copy jars to nexus"){
-            steps{
+        // stage("copy jars to nexus"){
+        //     steps{
 
-                script{
+        //         script{
 
-                    echo "*****WINNNN *****"
+        //             echo "*****WINNNN *****"
+                    
 
                     
 
 
-                }
+        //         }
 
 
-            }
-        }
+        //     }
+        // }
 
     }
 }    
